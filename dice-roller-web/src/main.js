@@ -1,11 +1,10 @@
 // src/main.js
-
 // window.AndroidBridge = {
-//     sendEvent: (msg) => {
+//     sendEventOpt: (msg) => {
 //         console.log("Mock bridge received:", msg);
 //     }
 // };
-window.sendEvent = function (payload) {
+window.sendEventMA = (payload) => {
     const body = {
         tenant: 1372,
         event: "test_event",
@@ -19,7 +18,7 @@ window.sendEvent = function (payload) {
         customer: "118702737",
         timestamp: "2026-03-12T12:00:00Z"
     };
-    if (window.AndroidBridge && window.AndroidBridge.sendEvent) {
-        window.AndroidBridge.sendEvent(JSON.stringify(body));
+    if (window.AndroidBridge?.sendEventOpt) {
+        window.AndroidBridge.sendEventOpt(JSON.stringify(body));
     }
 };
