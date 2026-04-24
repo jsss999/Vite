@@ -1,10 +1,12 @@
-// src/main.js
-// window.AndroidBridge = {
+// // src/main.js
+// // Mock-Bridge for testing. Be sure to comment out when bundling!
+// window.AndroidBridge = { // Enable this code and run in localhost i.e. cd dice-roller-web > npm run dev
 //     sendEventOpt: (msg) => {
 //         console.log("Mock bridge received:", msg);
 //     }
 // };
 window.sendEventMA = (payload) => {
+    console.log("sendEventMA called", payload);
     const body = {
         tenant: 1372,
         event: "test_event",
