@@ -12,7 +12,8 @@ window.sendEventMA = (payload) => {
         event: "test_event",
         context: {
             event_number: 1710259200,
-            event_string: "wv2app_to_optimove_via_sdk_manifest",
+            // event_string: "lclwv2app_to_optimove_via_sdk_manifest", // local assets
+            event_string: "whwv2app_to_optimove_via_sdk_manifest", // web-hosted assets
             event_text: payload.event || "",
             event_boolean: true
         },
