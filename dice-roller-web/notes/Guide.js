@@ -1,4 +1,7 @@
 
+// Creating Mini App: See FullStackBasicTemplate > Project4v2 > 5.1.2
+// Generating yml file for web-hosting: See FullStackBasicTemplate > Project4v2 > 5.1.3
+
 // Related projects
 // Android Studio > Dice Roller
 // FullStackBasicTemplate > Project4v2 > 5.1.2 and 5.1.3
