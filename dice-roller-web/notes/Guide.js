@@ -1,4 +1,3 @@
-
 // Related projects
 // Android Studio > Dice Roller
 // FullStackBasicTemplate > Project4v2 > 5.1.2 and 5.1.3
