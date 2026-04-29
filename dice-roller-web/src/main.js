@@ -28,7 +28,7 @@ window.eventBus = eventBus;
 //     }
 // };
 window.sendEventMA = (payload) => {
-    console.log("sendEventMA called", payload);
+    console.log("sendEventMA called", JSON.stringify(payload));
     const body = {
         tenant: 1372,
         event: payload.event || "test_event",
@@ -45,8 +45,9 @@ window.sendEventMA = (payload) => {
         timestamp: new Date().toISOString()
     };
     if (window.AndroidBridge?.sendEventOpt) {
+        console.log(`body: ${JSON.stringify(body)}`);
         window.AndroidBridge.sendEventOpt(JSON.stringify(body));
     }
     window.eventBus?.dispatch(payload.event, payload); // forward into internal event bus
-    console.log(window.eventBus.getEvents());
+    console.log(`eventBus: ${JSON.stringify(window.eventBus.getEvents())}`);
 };
