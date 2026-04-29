@@ -23,7 +23,7 @@ function handleEvent(event) {
         chain.shift();
     }
     const pattern = chain.join("");
-    console.log("chain:", pattern);
+    // console.log("chain:", pattern);
     if (pattern === "L6L") {
         console.log("Trigger matched L6L");
         chain = [];

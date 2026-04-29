@@ -1,7 +1,7 @@
 // /src/bridge/sendEventMA.js
 import { eventBus } from "../events/eventBus";
 export const sendEventMA = (payload) => {
-    console.log("sendEventMA called", JSON.stringify(payload));
+    // console.log("sendEventMA called", JSON.stringify(payload));
     // const body = {
     //     tenant: 1372,
     //     event: "test_event",
