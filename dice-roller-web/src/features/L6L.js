@@ -75,7 +75,7 @@ async function triggerOptimoveFlow() {
             context: {
                 event_number: sumRolls,
                 event_string: "L6L_whwv2app_to_optimove", // L6L_GTM2Opt_manifest
-                event_text: nextGame,
+                event_text: lastGame, // nextGame
                 event_boolean: true
             },
             visitor: "065e8f25f620e323",
