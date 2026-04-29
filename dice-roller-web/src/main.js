@@ -38,7 +38,7 @@ window.sendEventMA = (payload) => {
             event_string: "whwv2app_to_optimove_via_sdk_manifest", // web-hosted assets
             event_text: payload.event || "",
             event_boolean: true,
-            ...payload
+            // ...payload
         },
         visitor: "065e8f25f620e323",
         customer: "118702737",
@@ -46,6 +46,8 @@ window.sendEventMA = (payload) => {
     };
     if (window.AndroidBridge?.sendEventOpt) {
         console.log(`body: ${JSON.stringify(body)}`);
+        console.log(`event_string type: ${typeof body.context.event_string}`);
+        console.log(`event_text type: ${typeof body.context.event_text}`);
         window.AndroidBridge.sendEventOpt(JSON.stringify(body));
     }
     window.eventBus?.dispatch(payload.event, payload); // forward into internal event bus
