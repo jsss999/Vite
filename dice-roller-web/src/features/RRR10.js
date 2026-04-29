@@ -36,12 +36,12 @@ async function triggerTennisAPI() {
         const teams = json.doc?.[0]?.data?.teams || [];
         const topSeed = teams[0]?.team?.name || "unknown player";
         console.log("Top seed:", topSeed);
-        const payload = {
+        const body = {
             tenant: 1372,
             event: "tennis_event",
             context: {
                 event_number: rollTimes.length,
-                event_string: "RRR10_MA_manifest",
+                event_string: "RRR10_whwv2app_to_optimove", // RRR10_GTM2Opt_manifest
                 event_text: topSeed,
                 event_boolean: true
             },
@@ -50,10 +50,10 @@ async function triggerTennisAPI() {
             timestamp: new Date().toISOString()
         };
         if (window.AndroidBridge?.sendEventOpt) {
-            window.AndroidBridge.sendEventOpt(JSON.stringify(payload));
+            window.AndroidBridge.sendEventOpt(JSON.stringify(body));
         }
-        eventBus.dispatch("tennis_event", payload);
-        console.log("tennis event sent");
+        eventBus.dispatch("RRR10_event", body); // forward into internal event bus
+        console.log(`eventBus: ${JSON.stringify(eventBus.getEvents())}`);
     } catch (e) {
         console.error("tennis API trigger failed", e);
     }
