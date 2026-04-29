@@ -11,7 +11,7 @@ function handleEvent(event) {
     }
     // dice_roll → check last roll value
     if (event.event === "dice_roll") {
-        const roll = event.payload?.rollValue;
+        const roll = event.data?.rollValue;
         if (roll === 6) {
             symbol = "6";
             sumRolls += 6;

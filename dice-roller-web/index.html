@@ -2,7 +2,7 @@
 <html>
     <body>
         <button onclick="window.sendEventMA({ event: 'button_clicked', myKey: 'something_else' })" style="font-size: 20px; padding: 12px 24px;">Ouest</button>
-        <button onclick="window.sendEventMA({ event: 'dice_roll', payload: { rollValue: 6 } })">Roll</button>
+        <button onclick="window.sendEventMA({ event: 'dice_roll', data: { rollValue: 6 } })">Roll</button>
         <button onclick="window.sendEventMA({ event: 'log_event' })">Log</button>
         <script type="module" src="/src/main.js"></script>
     </body>
