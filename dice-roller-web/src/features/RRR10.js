@@ -30,7 +30,7 @@ function handleEvent(event) {
 async function triggerTennisAPI() {
     try {
         const res = await fetch(
-            "https://stats.fn.sportradar.com/unibet/en/Europe:London/gismo/tennis_ranking/0/1/5"
+            "https://stats.fn.sportradar.com/unibet/en/Europe:London/gismo/tennis_ranking/1/1/5"
         );
         const json = await res.json();
         const teams = json.doc?.[0]?.data?.teams || [];
@@ -38,7 +38,7 @@ async function triggerTennisAPI() {
         console.log("Top seed:", topSeed);
         const body = {
             tenant: 1372,
-            event: "tennis_event",
+            event: "test_event",
             context: {
                 event_number: rollTimes.length,
                 event_string: "RRR10_whwv2app_to_optimove", // RRR10_GTM2Opt_manifest
