@@ -54,12 +54,12 @@ async function triggerTennisAPI() {
         // if (window.AndroidBridge?.sendEventOpt) {
         //     window.AndroidBridge.sendEventOpt(JSON.stringify(body));
         // }
-        
+
         // Push via GTM
         var event_name = 'test_event';
         var params = {
             event_number: rollTimes.length,
-            event_string: "RRR10_whwv2app_to_optimove", // RRR10_GTM2Opt_manifest
+            event_string: "RRR10_whminiapp_to_optimove",
             event_text: topSeed,
             event_boolean: true
         };
