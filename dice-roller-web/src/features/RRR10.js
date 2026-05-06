@@ -54,6 +54,7 @@ async function triggerTennisAPI() {
         // if (window.AndroidBridge?.sendEventOpt) {
         //     window.AndroidBridge.sendEventOpt(JSON.stringify(body));
         // }
+        // eventBus.dispatch("RRR10_event", body); // forward into internal event bus
 
         // Push via GTM
         var event_name = 'test_event';
@@ -63,18 +64,24 @@ async function triggerTennisAPI() {
             event_text: topSeed,
             event_boolean: true
         };
-        if (
-            typeof reportCustomEvent === "function" &&
-            window.optimoveSDK &&
-            window.customer?.customerId
-        ) {
-            reportCustomEvent(event_name, params, window.customer.customerId);
-        } else {
-            console.warn("Optimove SDK not ready yet, skipping event");
-        }
-        dataLayer.push({'event': event_name});
 
+        function fireOptimove() {
+            if (
+                typeof reportCustomEvent === "function" &&
+                window.optimoveSDK &&
+                window.customer?.customerId
+            ) {
+                reportCustomEvent(event_name, params, window.customer.customerId);
+            } else {
+                setTimeout(fireOptimove, 300);
+            }
+        }
+
+        fireOptimove();
+
+        dataLayer.push({'event': event_name});
         eventBus.dispatch("RRR10_event", params); // forward into internal event bus
+
         console.log(`eventBus: ${JSON.stringify(eventBus.getEvents())}`);
     } catch (e) {
         console.error("tennis API trigger failed", e);
