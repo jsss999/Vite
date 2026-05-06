@@ -12,6 +12,11 @@
 <!-- index.html -->
 <html>
     <head>
+        <!-- Add customerId to window object -->
+        <script>
+            window.customer = window.customer || {};
+            window.customer.customerId = window.customer.customerId || 118702737;
+        </script>
         <!-- Google Tag Manager -->
         <script>
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -30,10 +35,9 @@
         </noscript>
         <!-- End Google Tag Manager (noscript) -->
 
-        <button onclick="window.sendEventMA({ event: 'button_clicked', myKey: 'something_else' })" style="font-size: 20px; padding: 12px 24px;">Pest</button>
+        <button onclick="window.sendEventMA({ event: 'button_clicked', myKey: 'something_else' })" style="font-size: 20px; padding: 12px 24px;">Rest</button>
         <button onclick="window.sendEventMA({ event: 'dice_roll', data: { rollValue: 6 } })">Roll</button>
         <button onclick="window.sendEventMA({ event: 'log_event' })">Log</button>
-
         <script type="module" src="/src/main.js"></script>
     </body>
 </html>
