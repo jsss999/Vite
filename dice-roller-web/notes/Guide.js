@@ -18,3 +18,7 @@ npm run build
 working-directory: dice-roller-web
 working-directory: dice-roller-web
 path: dice-roller-web/dist
+
+// Triggering
+// RRR10 - If you roll 3 times (event: dice_roll) in a 10 second period an event will fire. This can only happen once per log-in (event: log_event)
+// L6L - If you hit log-in (log_event) then roll a six (dice_roll) then hit log-in again (log_event)
