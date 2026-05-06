@@ -63,10 +63,18 @@ async function triggerTennisAPI() {
             event_text: topSeed,
             event_boolean: true
         };
-        reportCustomEvent(event_name, params, window.customer.customerId);
+        if (
+            typeof reportCustomEvent === "function" &&
+            window.optimoveSDK &&
+            window.customer?.customerId
+        ) {
+            reportCustomEvent(event_name, params, window.customer.customerId);
+        } else {
+            console.warn("Optimove SDK not ready yet, skipping event");
+        }
         dataLayer.push({'event': event_name});
 
-        eventBus.dispatch("RRR10_event", body); // forward into internal event bus
+        eventBus.dispatch("RRR10_event", params); // forward into internal event bus
         console.log(`eventBus: ${JSON.stringify(eventBus.getEvents())}`);
     } catch (e) {
         console.error("tennis API trigger failed", e);
