@@ -37,50 +37,36 @@ async function triggerTennisAPI() {
         const topSeed = teams[0]?.team?.name || "unknown player";
         console.log("Top seed:", topSeed);
 
-        // // Send back to app to push via Mobile SDK
-        // const body = {
-        //     tenant: 1372,
-        //     event: "test_event",
-        //     context: {
-        //         event_number: rollTimes.length,
-        //         event_string: "RRR10_whwv2app_to_optimove", // RRR10_GTM2Opt_manifest
-        //         event_text: topSeed,
-        //         event_boolean: true
-        //     },
-        //     visitor: "065e8f25f620e323",
-        //     customer: "118702737",
-        //     timestamp: new Date().toISOString()
-        // };
-        // if (window.AndroidBridge?.sendEventOpt) {
-        //     window.AndroidBridge.sendEventOpt(JSON.stringify(body));
-        // }
-        // eventBus.dispatch("RRR10_event", body); // forward into internal event bus
-
-        // Push via GTM
-        var event_name = 'test_event';
-        var params = {
-            event_number: rollTimes.length,
-            event_string: "RRR10_whminiapp_to_optimove",
-            event_text: topSeed,
-            event_boolean: true
+        // Send back to app to push via Mobile SDK
+        const body = {
+            tenant: 1372,
+            event: "test_event",
+            context: {
+                event_number: rollTimes.length,
+                event_string: "RRR10_whwv2app_to_optimove", // RRR10_GTM2Opt_manifest
+                event_text: topSeed,
+                event_boolean: true
+            },
+            visitor: "065e8f25f620e323",
+            customer: "118702737",
+            timestamp: new Date().toISOString()
         };
-
-        function fireOptimove() {
-            if (
-                typeof reportCustomEvent === "function" &&
-                window.optimoveSDK &&
-                window.customer?.customerId
-            ) {
-                reportCustomEvent(event_name, params, window.customer.customerId);
-            } else {
-                setTimeout(fireOptimove, 300);
-            }
+        if (window.AndroidBridge?.sendEventOpt) {
+            window.AndroidBridge.sendEventOpt(JSON.stringify(body));
         }
+        eventBus.dispatch("RRR10_event", body); // forward into internal event bus
 
-        fireOptimove();
-
-        dataLayer.push({'event': event_name});
-        eventBus.dispatch("RRR10_event", params); // forward into internal event bus
+        // // Push via GTM
+        // var event_name = 'test_event';
+        // var params = {
+        //     event_number: rollTimes.length,
+        //     event_string: "RRR10_whminiapp_to_optimove",
+        //     event_text: topSeed,
+        //     event_boolean: true
+        // };
+        // reportCustomEvent(event_name, params, window.customer.customerId);
+        // dataLayer.push({'event': event_name});
+        // eventBus.dispatch("RRR10_event", params); // forward into internal event bus
 
         console.log(`eventBus: ${JSON.stringify(eventBus.getEvents())}`);
     } catch (e) {
