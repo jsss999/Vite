@@ -69,31 +69,19 @@ async function triggerOptimoveFlow() {
             lastGame = `${h} ${ft.home}-${ft.away} ${a}`;
         }
         // --- send to native Optimove bridge ---
-        // const body = {
-        //     tenant: 1372,
-        //     event: "test_event",
-        //     context: {
-        //         event_number: sumRolls,
-        //         event_string: "L6L_whwv2app_to_optimove", // L6L_GTM2Opt_manifest
-        //         event_text: lastGame, // nextGame
-        //         event_boolean: true
-        //     },
-        //     visitor: "065e8f25f620e323",
-        //     customer: "118702737",
-        //     timestamp: new Date().toISOString()
-        // };
         const body = {
             tenant: 1372,
-            event: "sportsbook_bet",
+            event: "test_event",
             context: {
-                bet_info_amount: sumRolls,
-                bet_header_channel: "L6L_whwv2app_to_optimove", // L6L_GTM2Opt_manifest
-                bet_info_bet_category: lastGame, // nextGame
+                event_number: sumRolls,
+                event_string: "L6L_whwv2app_to_optimove", // L6L_GTM2Opt_manifest
+                event_text: lastGame, // nextGame
+                event_boolean: true
             },
             visitor: "065e8f25f620e323",
             customer: "118702737",
             timestamp: new Date().toISOString()
-        };        
+        };
         if (window.AndroidBridge?.sendEventOpt) {
             window.AndroidBridge.sendEventOpt(JSON.stringify(body));
         }
@@ -106,3 +94,17 @@ async function triggerOptimoveFlow() {
 // --- subscriptions ---
 eventBus.on("log_event", handleEvent);
 eventBus.on("dice_roll", handleEvent);
+
+// // sendEventOpt in native app handles any event and context. Use this body to test (Optimove Event Log: event: sportsbook_bet)
+// const body = {
+//     tenant: 1372,
+//     event: "sportsbook_bet",
+//     context: {
+//         bet_info_amount: sumRolls,
+//         bet_header_channel: "L6L_whwv2app_to_optimove", // L6L_GTM2Opt_manifest
+//         bet_info_bet_category: lastGame, // nextGame
+//     },
+//     visitor: "065e8f25f620e323",
+//     customer: "118702737",
+//     timestamp: new Date().toISOString()
+// };
