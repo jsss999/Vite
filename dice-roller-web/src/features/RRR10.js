@@ -1,5 +1,6 @@
 // /src/features/RRR10.js
 import { eventBus } from "../events/eventBus";
+import { addEvent } from "../storage/eventStorage";
 let rollTimes = [];
 let triggeredThisLogin = false;
 // --- shared handler ---
@@ -67,6 +68,7 @@ async function triggerTennisAPI() {
         reportCustomEvent(event_name, params, window.customer.customerId);
         dataLayer.push({'event': event_name});
         eventBus.dispatch("RRR10_event", params); // forward into internal event bus
+        addEvent({ event: "RRR10_event", payload: params });
 
         console.log(`eventBus: ${JSON.stringify(eventBus.getEvents())}`);
     } catch (e) {

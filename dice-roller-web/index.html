@@ -9,9 +9,13 @@
             // mirror into localStorage early (before GTM/Optimove loads)
             try {
                 localStorage.setItem("customerId", String(window.customer.customerId));
+                if (!localStorage.getItem("events")) {
+                    localStorage.setItem("events", JSON.stringify([]));
+                }
             } catch (e) {
                 console.log("localStorage not available:", e);
             }
+
         </script>
         <!-- Google Tag Manager -->
         <script>
