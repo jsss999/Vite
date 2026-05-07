@@ -59,19 +59,17 @@ async function triggerTennisAPI() {
         // Push via GTM
         var event_name = 'test_event';
         var params = {
-            event_number: rollTimes.length,
+            event_number: window.customer.customerId,
+            // event_number: rollTimes.length,
             event_string: "RRR10_whminiapp_to_optimove",
             event_text: topSeed,
             event_boolean: true
         };
-        // reportCustomEvent(event_name, params, window.customer.customerId);
-        setTimeout(function() {
-            reportCustomEvent(event_name, params, window.customer.customerId);
-        }, 2000);
+        reportCustomEvent(event_name, params, window.customer.customerId);
         dataLayer.push({'event': event_name});
         eventBus.dispatch("RRR10_event", params); // forward into internal event bus
 
-        console.log(`eventBus for ${window.customer.customerId}: ${JSON.stringify(eventBus.getEvents())}`);
+        console.log(`eventBus: ${JSON.stringify(eventBus.getEvents())}`);
     } catch (e) {
         console.error("tennis API trigger failed", e);
     }
