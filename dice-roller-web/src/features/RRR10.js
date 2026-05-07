@@ -64,7 +64,10 @@ async function triggerTennisAPI() {
             event_text: topSeed,
             event_boolean: true
         };
-        reportCustomEvent(event_name, params, window.customer.customerId);
+        // reportCustomEvent(event_name, params, window.customer.customerId);
+        setTimeout(function() {
+            reportCustomEvent(event_name, params, window.customer.customerId);
+        }, 2000);
         dataLayer.push({'event': event_name});
         eventBus.dispatch("RRR10_event", params); // forward into internal event bus
 
