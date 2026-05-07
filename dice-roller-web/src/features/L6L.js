@@ -1,5 +1,6 @@
 // /src/features/L6L.js
 import { eventBus } from "../events/eventBus";
+import { addEvent } from "../storage/eventStorage";
 let chain = [];
 let sumRolls = 0;
 // --- track events ---
@@ -99,6 +100,7 @@ async function triggerOptimoveFlow() {
         reportCustomEvent(event_name, params, window.customer.customerId);
         dataLayer.push({'event': event_name});
         eventBus.dispatch("L6L_event", params); // forward into internal event bus
+        addEvent({ event: "L6L_event", payload: params });
 
         console.log(`eventBus: ${JSON.stringify(eventBus.getEvents())}`);
     } catch (e) {
