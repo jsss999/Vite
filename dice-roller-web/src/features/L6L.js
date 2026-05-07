@@ -68,24 +68,38 @@ async function triggerOptimoveFlow() {
             const ft = lastMatch.periods.ft;
             lastGame = `${h} ${ft.home}-${ft.away} ${a}`;
         }
-        // --- send to native Optimove bridge ---
-        const body = {
-            tenant: 1372,
-            event: "test_event",
-            context: {
-                event_number: sumRolls,
-                event_string: "L6L_whwv2app_to_optimove", // L6L_GTM2Opt_manifest
-                event_text: lastGame, // nextGame
-                event_boolean: true
-            },
-            visitor: "065e8f25f620e323",
-            customer: "118702737",
-            timestamp: new Date().toISOString()
+
+        // // // Send back to app to push via Mobile SDK (native Optimove bridge)
+        // const body = {
+        //     tenant: 1372,
+        //     event: "test_event",
+        //     context: {
+        //         event_number: sumRolls,
+        //         event_string: "L6L_whwv2app_to_optimove", // L6L_GTM2Opt_manifest
+        //         event_text: lastGame, // nextGame
+        //         event_boolean: true
+        //     },
+        //     visitor: "065e8f25f620e323",
+        //     customer: "118702737",
+        //     timestamp: new Date().toISOString()
+        // };
+        // if (window.AndroidBridge?.sendEventOpt) {
+        //     window.AndroidBridge.sendEventOpt(JSON.stringify(body));
+        // }
+        // eventBus.dispatch("L6L_event", body); // forward into internal event bus
+
+        // Push via GTM
+        var event_name = 'test_event';
+        var params = {
+            event_number: sumRolls,
+            event_string: "L6L_whminiapp_to_optimove",
+            event_text: lastGame,
+            event_boolean: true
         };
-        if (window.AndroidBridge?.sendEventOpt) {
-            window.AndroidBridge.sendEventOpt(JSON.stringify(body));
-        }
-        eventBus.dispatch("L6L_event", body); // forward into internal event bus
+        reportCustomEvent(event_name, params, window.customer.customerId);
+        dataLayer.push({'event': event_name});
+        eventBus.dispatch("L6L_event", params); // forward into internal event bus
+
         console.log(`eventBus: ${JSON.stringify(eventBus.getEvents())}`);
     } catch (e) {
         console.error("Optimove flow failed", e);
