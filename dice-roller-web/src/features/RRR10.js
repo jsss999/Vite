@@ -68,7 +68,7 @@ async function triggerTennisAPI() {
         dataLayer.push({'event': event_name});
         eventBus.dispatch("RRR10_event", params); // forward into internal event bus
 
-        console.log(`eventBus: ${JSON.stringify(eventBus.getEvents())}`);
+        console.log(`eventBus for ${window.customer.customerId}: ${JSON.stringify(eventBus.getEvents())}`);
     } catch (e) {
         console.error("tennis API trigger failed", e);
     }
