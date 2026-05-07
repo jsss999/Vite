@@ -59,8 +59,7 @@ async function triggerTennisAPI() {
         // Push via GTM
         var event_name = 'test_event';
         var params = {
-            event_number: window.customer.customerId,
-            // event_number: rollTimes.length,
+            event_number: rollTimes.length,
             event_string: "RRR10_whminiapp_to_optimove",
             event_text: topSeed,
             event_boolean: true
