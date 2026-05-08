@@ -1,4 +1,5 @@
 // /src/features/RRR10.js
+// Non-GTM SDK event triggers. Disable this file by commenting out event subscriptions at the bottom (eventBus.on statements)
 import { eventBus } from "../events/eventBus";
 import { addEvent } from "../storage/eventStorage";
 let rollTimes = [];
@@ -75,6 +76,6 @@ async function triggerTennisAPI() {
         console.error("tennis API trigger failed", e);
     }
 }
-// // --- subscribe to events that RRR10 is dependent on ---
-// eventBus.on("log_event", handleEvent);
-// eventBus.on("dice_roll", handleEvent);
+// --- subscribe to events that RRR10 is dependent on ---
+eventBus.on("log_event", handleEvent);
+eventBus.on("dice_roll", handleEvent);

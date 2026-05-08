@@ -1,4 +1,5 @@
 // /src/features/L6L.js
+// Non-GTM SDK event triggers. Disable this file by commenting out event subscriptions at the bottom (eventBus.on statements)
 import { eventBus } from "../events/eventBus";
 import { addEvent } from "../storage/eventStorage";
 let chain = [];
