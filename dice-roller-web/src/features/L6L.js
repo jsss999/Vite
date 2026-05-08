@@ -107,7 +107,7 @@ async function triggerOptimoveFlow() {
         console.error("Optimove flow failed", e);
     }
 }
-// --- subscriptions ---
+// --- subscribe to events that L6L is dependent on ---
 eventBus.on("log_event", handleEvent);
 eventBus.on("dice_roll", handleEvent);
 
