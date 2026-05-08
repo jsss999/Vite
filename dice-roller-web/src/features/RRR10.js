@@ -76,6 +76,6 @@ async function triggerTennisAPI() {
         console.error("tennis API trigger failed", e);
     }
 }
-// --- subscribe to events that RRR10 is dependent on ---
-eventBus.on("log_event", handleEvent);
-eventBus.on("dice_roll", handleEvent);
+// // --- subscribe to events that RRR10 is dependent on ---
+// eventBus.on("log_event", handleEvent);
+// eventBus.on("dice_roll", handleEvent);

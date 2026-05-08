@@ -108,9 +108,9 @@ async function triggerOptimoveFlow() {
         console.error("Optimove flow failed", e);
     }
 }
-// --- subscribe to events that L6L is dependent on ---
-eventBus.on("log_event", handleEvent);
-eventBus.on("dice_roll", handleEvent);
+// // --- subscribe to events that L6L is dependent on ---
+// eventBus.on("log_event", handleEvent);
+// eventBus.on("dice_roll", handleEvent);
 
 // // sendEventOpt in native app handles any event and context. Use this body to test (Optimove Event Log: event: sportsbook_bet)
 // const body = {
