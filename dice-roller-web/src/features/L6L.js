@@ -1,5 +1,6 @@
 // /src/features/L6L.js
-// Non-GTM SDK event triggers. Disable this file by commenting out event subscriptions at the bottom (eventBus.on statements)
+// 1. to both aggregate and push events directly from mini-app (via GTM-implemented web SDK): Uncomment event subscriptions at the bottom (i.e. eventBus.on statements)
+// 2. to both aggregate and push events from GTM tags: Comment event subscriptions at the bottom (i.e. eventBus.on statements)
 import { eventBus } from "../events/eventBus";
 import { addEvent } from "../storage/eventStorage";
 let chain = [];
