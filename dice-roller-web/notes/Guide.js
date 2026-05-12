@@ -29,7 +29,7 @@ path: dice-roller-web/dist
 npm run build
 // start up a local web server which serves (hosts) your dist folder
 npx serve dist
-// expose the server to any device on the same network (server URL: localhost:5173)
+// create a new terminal and expose the server to any device on the same network (server URL: localhost:5173)
 npm run dev -- --host
 // devices (physical or virtual) cannot reach local server at its localhost address so we need to expose it publicly
 // create a public URL to the local server so any device (on external/remote networks) can access it
