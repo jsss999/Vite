@@ -89,6 +89,7 @@ async function triggerOptimoveFlow() {
         if (window.AndroidBridge?.sendEventOpt) {
             window.AndroidBridge.sendEventOpt(JSON.stringify(body));
         }
+        console.log("iosBridge exists?", !!window.webkit?.messageHandlers?.iosBridge);
         if (window.webkit?.messageHandlers?.iosBridge) {
             console.log("sending to iOS")
             window.webkit.messageHandlers.iosBridge.postMessage(JSON.stringify(body));
