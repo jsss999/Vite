@@ -90,6 +90,7 @@ async function triggerOptimoveFlow() {
             window.AndroidBridge.sendEventOpt(JSON.stringify(body));
         }
         if (window.webkit?.messageHandlers?.iosBridge) {
+            console.log("sending to iOS")
             window.webkit.messageHandlers.iosBridge.postMessage(JSON.stringify(body));
         }
         eventBus.dispatch("L6L_event", body); // forward into internal event bus
