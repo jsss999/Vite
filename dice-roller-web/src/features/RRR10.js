@@ -46,7 +46,7 @@ async function triggerTennisAPI() {
             event: "test_event",
             context: {
                 event_number: rollTimes.length,
-                event_string: "RRR10_whwv2app_to_optimoveiOS", // RRR10_whwv2app_to_optimove
+                event_string: "RRR10_whwv2app_to_optimoveiOS", // RRR10_whwv2app_to_optimoveAnd
                 event_text: topSeed,
                 event_boolean: true
             },

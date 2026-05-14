@@ -78,7 +78,7 @@ async function triggerOptimoveFlow() {
             event: "test_event",
             context: {
                 event_number: sumRolls,
-                event_string: "L6L_whwv2app_to_optimoveiOS", // L6L_whwv2app_to_optimove
+                event_string: "L6L_whwv2app_to_optimoveiOS", // L6L_whwv2app_to_optimoveAnd
                 event_text: lastGame, // nextGame
                 event_boolean: true
             },
