@@ -89,6 +89,9 @@ async function triggerOptimoveFlow() {
         if (window.AndroidBridge?.sendEventOpt) {
             window.AndroidBridge.sendEventOpt(JSON.stringify(body));
         }
+        if (window.webkit?.messageHandlers?.iosBridge) {
+            window.webkit.messageHandlers.iosBridge.postMessage(JSON.stringify(body));
+        }
         eventBus.dispatch("L6L_event", body); // forward into internal event bus
 
         // // Push via GTM
